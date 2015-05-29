@@ -95,14 +95,26 @@ for($i = 0; $i < $#lines; $i++){
 			push @country, $checkline;
 		}
 	}
-	elsif($checkline =~ /org-name:|OrgName:|netname:|owner:/i){
-		$checkline =~ s/org-name:|OrgName:|netname:|owner://i;
-		$checkline =~ s/(\s+)|(\t+)//;
-		push @info, $checkline;
-	}
-	
-  
+
  }
+ 
+ for($k = 0; $k < $#lines; $k++){
+		$checkline_2 = $lines[$k];
+		if($checkline_2 =~ /owner:/i){
+			$checkline_2 =~ s/owner://i;
+			$checkline_2 =~ s/(\s+)|(\t+)//;
+			if($checkline_2 =~ /\w+/){
+				push @info, $checkline_2;
+			}
+		}
+ 	}
+ 	
+ for($o = 0; $o < $#lines; $o++){
+		$checkline_3 = $lines[$o];
+		if($checkline_3 =~ /org-name:|OrgName:|netname:/ && $info[0] !~ /\w+/){
+			push @info, $checkline_3;
+		}
+ 	}
   
 if($country[0] =~ /US/){
               $string = $country[0]." ".$country[1]." ".$country[2];
@@ -112,7 +124,7 @@ else{
 	$string =~ s/\((\w+\s?)+\)//i;
               }
               $string2 = join("", @info);
-              $string2 = s/,//;
+         
               
  print "\nEnter a reason to block IP $ip:\t";
  
