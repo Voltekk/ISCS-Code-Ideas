@@ -112,6 +112,8 @@ for($i = 0; $i < $#lines; $i++){
  for($o = 0; $o < $#lines; $o++){
 		$checkline_3 = $lines[$o];
 		if($checkline_3 =~ /org-name:|OrgName:|netname:/ && $info[0] !~ /\w+/){
+			$checkline_3 =~ s/org-name:|OrgName:|netname://i;
+			$checkline_3 =~ s/(\s+)|(\t+)//;
 			push @info, $checkline_3;
 		}
  	}
