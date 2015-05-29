@@ -112,6 +112,7 @@ else{
 	$string =~ s/\((\w+\s?)+\)//i;
               }
               $string2 = join("", @info);
+              $string2 = s/,//;
               
  print "\nEnter a reason to block IP $ip:\t";
  
