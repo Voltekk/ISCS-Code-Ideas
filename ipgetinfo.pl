@@ -5,7 +5,11 @@ use Locale::Country;
 $file = "C:/Perl/ipstripfile.txt";
 open (FILE, ">", $file);
 
-$ip = '162.255.126.8';
+print "\nEnter an ip:\t";
+$ip = <STDIN>;
+
+chomp $ip;
+$ip =~ s/\s+//;
   
   $s = whois($ip);
 
