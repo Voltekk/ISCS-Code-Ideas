@@ -7,6 +7,7 @@ $fileip = <STDIN>;
 chomp $fileip;
 
 $ipfile = read_file($fileip);
+#$ipfile = s/:\d+//g;
 
 @iplist = split /\n/, $ipfile;
 
@@ -114,6 +115,7 @@ for($i = 0; $i < $#lines; $i++){
 		if($checkline_3 =~ /org-name:|OrgName:|netname:/ && $info[0] !~ /\w+/){
 			$checkline_3 =~ s/org-name:|OrgName:|netname://i;
 			$checkline_3 =~ s/(\s+)|(\t+)//;
+			$checkline_3 =~ s/\,\s+?LLC/ LLC/;
 			push @info, $checkline_3;
 		}
  	}
