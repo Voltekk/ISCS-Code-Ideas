@@ -70,6 +70,8 @@ $ip =~ s/\s+//;
 
 $read = read_file($file);
 
+$read =~ s/,|\(|\)//g;
+
 @lines = split /\n/, $read;
 
 @country;
