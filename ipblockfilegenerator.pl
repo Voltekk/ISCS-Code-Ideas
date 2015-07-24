@@ -2,9 +2,10 @@ use Net::Whois::Raw qw( whois );
 use File::Slurp;
 use Locale::Country;
 
-print "\nEnter the file containing IPs:\t";
-$fileip = <STDIN>;
-chomp $fileip;
+system('get_ips_not_in_db.pl');
+
+$container = "C:/Perl/here.txt";
+$fileip = read_file($container);
 
 $ipfile = read_file($fileip);
 #$ipfile = s/:\d+//g;
