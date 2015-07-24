@@ -159,4 +159,8 @@ else{
   
   	
  close CSV;
- exit;
+ 
+ system('del C:\\Perl\\here.txt');
+ system('del C:\\Perl\ip_skip_file.txt');
+ 
+ exit();
