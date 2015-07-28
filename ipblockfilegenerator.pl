@@ -2,7 +2,7 @@ use Net::Whois::Raw qw( whois );
 use File::Slurp;
 use Locale::Country;
 
-system('get_ips_not_in_db.pl');
+system('bman.pl');
 
 $container = "C:/Perl/here.txt";
 $fileip = read_file($container);
@@ -96,6 +96,9 @@ for($i = 0; $i < $#lines; $i++){
 		}
 		else{
 			$checkline = code2country($checkline);
+			$checkline =~ s/\,//g;
+			$checkline =~ s/the republic of//g;
+			$checkline =~ s/\s+/ /g;
 			push @country, $checkline;
 		}
 	}
@@ -159,8 +162,4 @@ else{
   
   	
  close CSV;
- 
- system('del C:\\Perl\\here.txt');
- system('del C:\\Perl\ip_skip_file.txt');
- 
- exit();
+ exit;
