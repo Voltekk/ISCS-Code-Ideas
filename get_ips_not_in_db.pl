@@ -6,7 +6,7 @@ use HTML::FormatText;
 use File::Slurp;
 use List::Compare;
 
-my $file = "C:\\Perl\\ip_skip_file.txt";
+my $file = "C:/Perl/ip_skip_file.txt";
 open(FILE, ">", $file) or die;
 
 print "\nEnter the file containing IPs:\t";
@@ -15,7 +15,7 @@ chomp $fileip;
 
 my @ips_to_check = split /\n/, read_file($fileip);
 
-my $url = get("http://URL/");
+my $url = get("==============================");
 my $format_url = HTML::FormatText->new();
 my $treebuild = HTML::TreeBuilder->new();
 my $parse = $treebuild->parse($url);
