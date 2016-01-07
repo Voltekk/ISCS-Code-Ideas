@@ -4,7 +4,7 @@ use LWP::Simple qw/get/;
 use HTML::TreeBuilder;
 use HTML::FormatText;
 
-print "\nMake sure to have chrome, mozilla, or browser of choice set to ENV PATH. Modify line 21 to ensure right system call to pull up DNS graph.\n\n"; 
+print "\nMake sure to have chrome, mozilla, or browser of choice set to ENV PATH. Modify line ___ to ensure right system call to pull up DNS graph.\n\n"; 
 
 while(){
 	my $file = make_output_file();
@@ -13,7 +13,7 @@ while(){
 	for(my $i = 0; $i < 4; $i++){
 		if($i != 3){
 			my $url = $research[$i];
-			my $url_data = get_ip_or_site();
+			my $url_data = &get_url_clean($url);
 			print FILE $url_data."\n";
 		}
 		else{
