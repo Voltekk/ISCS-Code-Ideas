@@ -4,7 +4,7 @@ use LWP::Simple qw/get/;
 use HTML::TreeBuilder;
 use HTML::FormatText;
 
-print "\nMake sure to have chrome, mozilla, or browser of choice set to ENV PATH. Modify line ___ to ensure right system call to pull up DNS graph.\n\n"; 
+print "\nMake sure to have chrome, mozilla, or browser of choice set to ENV PATH. Modify line 21 to ensure right system call to pull up DNS graph.\n\n"; 
 
 while(){
 	my $file = make_output_file();
