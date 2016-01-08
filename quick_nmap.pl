@@ -3,13 +3,14 @@ use warnings;
 use File::Slurp qw/read_file write_file/;
 
 our @nmap_commands;
-our $base_command = "nmap -T4 -A -vv -Pn -sU -sS";
+our $base_command = "nmap -vv -Pn -sS -sU";
 
 print "\nThis is a script to scan the network using nmap. Be sure that nmap is present on the current system before you begin\n";
 print "\nEnter the output file for the data:\t";
 
 our $file = <STDIN>;
 chomp $file;
+our $file_base = $file;
 
 print "\nEnter the file list of ips (this should be a file where an ip is on a new line) you are interested in scanning:\t";
 my $ip_file = <STDIN>;
@@ -33,8 +34,10 @@ for(my $j = 0; $j < $#ip_list + 1; $j++){
 print "\nPreparation complete... now running scans against hosts...\n\n\n";
 
 for(my $k = 0; $k < $#nmap_commands + 1; $k++){
+	$file = $file.$k.".txt";
 	my $send_command = $nmap_commands[$k]." -oN ".$file;
 	system($send_command);
+	$file = $file_base;
 }
 
 #################################################################################################################################
