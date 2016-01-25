@@ -10,11 +10,13 @@ while(){
 	my $file = make_output_file();
 	open(FILE, ">>", $file) or die;
 	my @research = &get_ip_or_site();
-	for(my $i = 0; $i < 4; $i++){
+	for(my $i = 0; $i < 5; $i++){
 		if($i != 3){
 			my $url = $research[$i];
 			my $url_data = &get_url_clean($url);
 			print FILE $url_data."\n";
+			my $command = "chrome ".$url;
+			system($command);
 		}
 		else{
 			my $url4 = $research[3];
@@ -44,10 +46,12 @@ sub get_ip_or_site(){
 	my $scoring = "&scorecard=1";
 	my $shared = "&shared=1";
 	my $graph = "&graph=1";
+	my $string_query = "http://www.robtex.com/?q=";
 	$array_hold[0] = $string.$investigate;
 	$array_hold[1] = $string.$investigate.$scoring;
 	$array_hold[2] = $string.$investigate.$shared;
 	$array_hold[3] = $string.$investigate.$graph;
+	$array_hold[4] = $string_query.$investigate;
 	return @array_hold;
 	undef $investigate;
 	undef @array_hold;
