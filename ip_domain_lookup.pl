@@ -11,9 +11,11 @@ while(){
 		my $ip = &query("Enter IP");
 		my $domaintools = "whois.domaintools.com/".$ip;
 		my $virustotal = "https://www.virustotal.com/en/ip-address/".$ip."/information/";
+		my $shodan = "https://www.shodan.io/host/".$ip;
 		my $command = "chrome ";
 		system($command.$domaintools);
 		system($command.$virustotal);
+		system($command.$shodan);
 	}
 	elsif($what_to_query =~ /2/){
 		my $domain = &query("Enter domain");
