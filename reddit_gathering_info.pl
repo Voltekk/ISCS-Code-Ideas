@@ -10,9 +10,6 @@ use Data::Dump qw/dump/;
 use Text::TermExtract;
 use List::MoreUtils qw/uniq/;
 use File::Slurp;
-use Crypt::RC4;
-use MIME::Base64;
-use Tkx;
 
 
 #http://www.perlmonks.org/index.pl?abspart=1;displaytype=displaycode;node_id=1116818;part=1
