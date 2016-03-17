@@ -12,11 +12,11 @@ my $fciv_command = $fciv." -add ".$input_directory." -r -both -xml $output_drive
 
 system($fciv_command);
 
-my $robo_command = "robocopy ".$input_directory." ".$case_name;
+my $robo_command = "start robocopy ".$input_directory." ".$case_name;
 
 system($robo_command);
 
-my $fciv_verify = $fciv." -add ".$case_name." -r -both -xml $output_drive"."outverify.xml";
+my $fciv_verify = "start ".$fciv." -add ".$case_name." -r -both -xml $output_drive"."outverify.xml";
 
 system($fciv_verify);
 
